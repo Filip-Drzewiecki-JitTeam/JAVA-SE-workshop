@@ -16,7 +16,10 @@ public class CalculationsService {
         char chr = 'A';
 
         int additionEquation = add(byte1, short1);
-        int reminderEquation = reminder(1, 3);
+        int reminderEquation = reminder(5, 2);
+
+        String equation = "4" + "6";
+
         System.out.println(reminderEquation);
     }
 

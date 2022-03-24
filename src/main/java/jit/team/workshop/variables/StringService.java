@@ -9,7 +9,7 @@ public class StringService {
         System.out.println(myString1 + myString2);
     }
 
-    public void method() {
+    public void practiceStrings() {
         String string = "Java";
         String str = new String("Java");
         boolean equal = string.equals(str);

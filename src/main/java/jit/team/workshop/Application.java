@@ -10,30 +10,15 @@ import jit.team.workshop.variables.StringService;
 
 public class Application {
 
+    private static final StringService stringService = new StringService();
+    private static final CalculationsService calculationsService = new CalculationsService();
+    private static final LoopService loopService = new LoopService();
+    private static final ArrayService arrayService = new ArrayService();
+    private static final ConditionsService conditionsService = new ConditionsService();
+    private static final CarService carService = new CarService();
+    private static final CollectionService collectionService = new CollectionService();
+
     public static void main(String[] args) {
-        System.out.println("Hello world");
-
-        StringService stringService = new StringService();
-        CalculationsService calculationsService = new CalculationsService();
-        LoopService loopService = new LoopService();
-        ArrayService arrayService = new ArrayService();
-        ConditionsService conditionsService = new ConditionsService();
-        CarService carService = new CarService();
-        CollectionService collectionService = new CollectionService();
-
-
-//        stringService.helloWorld();
-//
-//        calculationsService.practiceCalculations();
-//
-//        loopService.practiceLoops();
-//
-//        arrayService.practiceArrays();
-//
-//        conditionsService.practiceConditions();
-//
-//        carService.drivingDemo();
-//
-//        collectionService.practiceCollections();
+        System.out.println("Welcome to Java SE workshop");
     }
 }
