@@ -53,7 +53,7 @@ public class ConditionsService {
     }
 
     /**
-     * Exercise
+     * Exercise 1
      * Create method that will count tax to pay.
      * 1. Method should accept 1 parameter - annual income.
      * 2. Method should return String with precise information - what is income, what is due tax.

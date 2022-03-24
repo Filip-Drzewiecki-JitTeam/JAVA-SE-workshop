@@ -5,6 +5,7 @@ import jit.team.workshop.inheritance.objects.Truck;
 import jit.team.workshop.inheritance.interfaces.Car;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,7 +13,8 @@ import java.util.stream.IntStream;
 public class ListService {
 
     public void practiceLists() {
-        produceCars();
+        //produceCars();
+        //flattenList();
     }
 
     public List<String> createList(String... strings) {
@@ -56,5 +58,31 @@ public class ListService {
         cars.addAll(sportCars);
         cars.addAll(trucks);
         return cars;
+    }
+
+    private void flattenList() {
+        List<List<String>> listsOfLists = createListsOfLists();
+
+        System.out.println("list contains " + listsOfLists.size() + "elements");
+
+        List<String> flattenedList = listsOfLists
+                .stream()
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+
+        System.out.println("flattened list contains " + flattenedList.size() + "elements");
+    }
+
+    private List<List<String>> createListsOfLists() {
+        List<List<String>> listsOfLists = new ArrayList<>();
+        List<String> list1 = List.of("Warsaw", "Gdansk", "Cracow");
+        List<String> list2 = List.of("Bilbao", "Barcelona", "Valencia");
+        List<String> list3 = List.of("Oslo");
+
+        listsOfLists.add(list1);
+        listsOfLists.add(list2);
+        listsOfLists.add(list3);
+
+        return listsOfLists;
     }
 }

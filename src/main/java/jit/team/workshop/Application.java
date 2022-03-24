@@ -1,8 +1,8 @@
 package jit.team.workshop;
 
-
 import jit.team.workshop.collections.ArrayService;
-import jit.team.workshop.collections.ListService;
+import jit.team.workshop.collections.CollectionService;
+import jit.team.workshop.inheritance.CarService;
 import jit.team.workshop.variables.CalculationsService;
 import jit.team.workshop.variables.ConditionsService;
 import jit.team.workshop.variables.LoopService;
@@ -13,25 +13,27 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("Hello world");
 
-//        StringService stringService = new StringService();
+        StringService stringService = new StringService();
+        CalculationsService calculationsService = new CalculationsService();
+        LoopService loopService = new LoopService();
+        ArrayService arrayService = new ArrayService();
+        ConditionsService conditionsService = new ConditionsService();
+        CarService carService = new CarService();
+        CollectionService collectionService = new CollectionService();
+
+
 //        stringService.helloWorld();
-
-//        CalculationsService calculationsService = new CalculationsService();
+//
 //        calculationsService.practiceCalculations();
-
-//        LoopService loopService = new LoopService();
+//
 //        loopService.practiceLoops();
-
-//        ArrayService arrayService = new ArrayService();
+//
 //        arrayService.practiceArrays();
-
-//        ConditionsService conditionsService = new ConditionsService();
+//
 //        conditionsService.practiceConditions();
-
-//        CarService carService = new CarService();
+//
 //        carService.drivingDemo();
-
-//        ListService collectionService = new ListService();
-//        collectionService.practiceLists();
+//
+//        collectionService.practiceCollections();
     }
 }
