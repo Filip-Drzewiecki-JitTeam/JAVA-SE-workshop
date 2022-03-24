@@ -12,8 +12,4 @@ public class CollectionService {
         //setService.practiceSets();
         //mapService.practiceMaps();
     }
-
-    private void learnTheDifference() {
-
-    }
 }

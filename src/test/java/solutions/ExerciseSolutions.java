@@ -2,8 +2,10 @@ package solutions;
 
 import org.junit.jupiter.api.Test;
 import solutions.objects.Adult;
+import solutions.objects.Animal;
 import solutions.objects.Child;
 import solutions.objects.Human;
+import solutions.service.AnimalService;
 import solutions.service.HumanService;
 import solutions.service.TaxService;
 
@@ -15,12 +17,14 @@ import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ExerciseSolutions {
 
     private final TaxService taxService = new TaxService();
     private final HumanService humanService = new HumanService();
+    private final AnimalService animalService = new AnimalService();
 
     /**
      * Exercise 1
@@ -107,5 +111,18 @@ public class ExerciseSolutions {
 
         assertEquals(1, humansWithTaxCalculated.size());
         assertEquals(14539.76, humansWithTaxCalculated.get(0).getDueTax());
+    }
+
+    /**
+     * Exercise 5
+     * Create your own interface and method that uses generics implementing that interface.
+     * */
+    @Test
+    public void exercise5() {
+        Animal bear = new Animal("Bear", 600.00);
+        Animal deer = new Animal("Deer");
+
+        assertNotNull(animalService.returnIfNullSafe(bear));
+        assertNull(animalService.returnIfNullSafe(deer));
     }
 }

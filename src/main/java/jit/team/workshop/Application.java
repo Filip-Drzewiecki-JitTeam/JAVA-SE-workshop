@@ -2,7 +2,8 @@ package jit.team.workshop;
 
 import jit.team.workshop.collections.ArrayService;
 import jit.team.workshop.collections.CollectionService;
-import jit.team.workshop.inheritance.CarService;
+import jit.team.workshop.generics.service.GenericsService;
+import jit.team.workshop.inheritance.service.ObjectsService;
 import jit.team.workshop.variables.CalculationsService;
 import jit.team.workshop.variables.ConditionsService;
 import jit.team.workshop.variables.LoopService;
@@ -15,8 +16,9 @@ public class Application {
     private static final LoopService loopService = new LoopService();
     private static final ArrayService arrayService = new ArrayService();
     private static final ConditionsService conditionsService = new ConditionsService();
-    private static final CarService carService = new CarService();
+    private static final ObjectsService objectsService = new ObjectsService();
     private static final CollectionService collectionService = new CollectionService();
+    private static final GenericsService generics = new GenericsService();
 
     public static void main(String[] args) {
         System.out.println("Welcome to Java SE workshop");

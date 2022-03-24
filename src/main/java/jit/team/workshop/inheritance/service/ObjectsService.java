@@ -1,9 +1,9 @@
-package jit.team.workshop.inheritance;
+package jit.team.workshop.inheritance.service;
 
 import jit.team.workshop.inheritance.interfaces.Car;
 import jit.team.workshop.inheritance.objects.SportCar;
 
-public class CarService {
+public class ObjectsService {
 
     public void drivingDemo() {
         Car car = new SportCar(250);
