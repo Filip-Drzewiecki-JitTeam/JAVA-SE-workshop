@@ -47,7 +47,7 @@ public class ConditionsService {
         System.out.println("number=" + randomNumber);
     }
 
-    private int getRandomNumberUsingNextInt(int min, int max) {
+    public int getRandomNumberUsingNextInt(int min, int max) {
         Random random = new Random();
         return random.nextInt(max) + min;
     }
