@@ -2,6 +2,7 @@ package jit.team.workshop;
 
 import jit.team.workshop.collections.ArrayService;
 import jit.team.workshop.collections.CollectionService;
+import jit.team.workshop.files.FilesService;
 import jit.team.workshop.generics.service.GenericsService;
 import jit.team.workshop.inheritance.service.ObjectsService;
 import jit.team.workshop.variables.CalculationsService;
@@ -19,6 +20,7 @@ public class Application {
     private static final ObjectsService objectsService = new ObjectsService();
     private static final CollectionService collectionService = new CollectionService();
     private static final GenericsService generics = new GenericsService();
+    private static final FilesService files = new FilesService();
 
     public static void main(String[] args) {
         System.out.println("Welcome to Java SE workshop");
