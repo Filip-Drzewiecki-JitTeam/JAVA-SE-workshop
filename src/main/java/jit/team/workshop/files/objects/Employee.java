@@ -10,6 +10,15 @@ public class Employee implements Mappable<Employee> {
     private Integer age;
     private BigDecimal income;
 
+    public Employee() {
+    }
+
+    public Employee(String name, Integer age, BigDecimal income) {
+        this.name = name;
+        this.age = age;
+        this.income = income;
+    }
+
     @Override
     public Employee ofMap(Map<String, Object> fields) {
         Employee em = new Employee();
@@ -17,6 +26,13 @@ public class Employee implements Mappable<Employee> {
         em.age = Integer.parseInt((String) fields.get("age"));
         em.income = new BigDecimal((String) fields.get("income"));
         return em;
+    }
+
+    @Override
+    public String toCsvRow() {
+        return this.name + "," +
+                this.age + "," +
+                this.income.toString() + "\r\n";
     }
 
     public String getName() {

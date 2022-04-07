@@ -3,9 +3,12 @@ package jit.team.workshop.files;
 import jit.team.workshop.files.objects.Mappable;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
+
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,8 +29,28 @@ public class CsvMapper<T extends Mappable<T>> {
         this.clazz = clazz;
     }
 
-    public List<T> map(InputStream stream) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+    public byte[] write(List<T> list, List<String> providedSchema) {
+
+        String firstRow = "";
+        if (providedSchema != null) {
+            firstRow = String.join(",", providedSchema) + "\r\n";
+        }
+
+        List<String> rows = list
+                .stream()
+                .map(Mappable::toCsvRow)
+                .collect(Collectors.toList());
+
+        List<String> lines = new ArrayList<>();
+        lines.add(firstRow);
+        lines.addAll(rows);
+        String completeCsv = String.join("", lines);
+        return completeCsv.getBytes(StandardCharsets.UTF_8);
+    }
+
+    public List<T> read(byte[] file) {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(file)));
 
         List<String[]> lines = reader.lines()
                 .map(row -> row.split(","))
