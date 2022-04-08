@@ -1,5 +1,7 @@
 package jit.team.workshop.variables;
 
+import jit.team.workshop.exercises.Exercise1;
+
 import java.util.Random;
 
 public class ConditionsService {
@@ -8,6 +10,8 @@ public class ConditionsService {
         //simpleIf();
         //elseIf();
         //nestedIf();
+
+        new Exercise1().doExercise();
     }
 
     private void simpleIf() {
@@ -32,7 +36,7 @@ public class ConditionsService {
     }
 
     private void nestedIf() {
-        int randomNumber = getRandomNumberUsingNextInt(1, 50);
+        int randomNumber = RandomUtils.generateRandomInt(1, 50);
         if (randomNumber > 10) {
             System.out.println("Bigger than 10");
             if (randomNumber > 30) {
@@ -46,19 +50,4 @@ public class ConditionsService {
         }
         System.out.println("number=" + randomNumber);
     }
-
-    public int getRandomNumberUsingNextInt(int min, int max) {
-        Random random = new Random();
-        return random.nextInt(max) + min;
-    }
-
-    /**
-     * Exercise 1
-     * Create method that will count tax to pay.
-     * 1. Method should accept 1 parameter - annual income.
-     * 2. Method should return String with precise information - what is income, what is due tax.
-     * Data to use:
-     * first rate is up to 85 528 PLN. Rate is 17%.
-     * second rate is above 85 528 PLN. Rate is 32%.
-     * */
 }

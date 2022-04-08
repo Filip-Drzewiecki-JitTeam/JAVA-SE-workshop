@@ -1,5 +1,7 @@
 package jit.team.workshop.collections;
 
+import jit.team.workshop.exercises.Exercise5;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,8 @@ public class MapService {
     public void practiceMaps() {
         createMap();
         createMapOfParentsAndKids();
+
+        new Exercise5().doExercise();
     }
 
     private Map<String, String> createMap() {
@@ -45,13 +49,4 @@ public class MapService {
 
         return map;
     }
-
-    /**
-     * Exercise 4
-     * Create service that takes parameter of map that contains:
-     * 1) keys - country of origin
-     * 2) values - Lists of Humans
-     *
-     * Service should calculate taxes only for poles.
-     * */
 }

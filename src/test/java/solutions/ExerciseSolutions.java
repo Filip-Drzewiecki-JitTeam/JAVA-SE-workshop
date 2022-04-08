@@ -1,13 +1,16 @@
 package solutions;
 
+import jit.team.workshop.exercises.*;
+import jit.team.workshop.exercises.objects.Product;
+import jit.team.workshop.exercises.objects.Shop;
+import jit.team.workshop.exercises.service.ProductService;
 import org.junit.jupiter.api.Test;
+import solutions.annotations.Exercise;
 import solutions.objects.Adult;
 import solutions.objects.Animal;
 import solutions.objects.Child;
 import solutions.objects.Human;
-import solutions.service.AnimalService;
-import solutions.service.HumanService;
-import solutions.service.TaxService;
+import solutions.service.*;
 
 import java.util.List;
 import java.util.Map;
@@ -26,29 +29,15 @@ public class ExerciseSolutions {
     private final HumanService humanService = new HumanService();
     private final AnimalService animalService = new AnimalService();
 
-    /**
-     * Exercise 1
-     * Create method that will count tax to pay.
-     * 1. Method should accept 1 parameter - annual income.
-     * 2. Method should return String with precise information - what is income, what is due tax.
-     * Data to use:
-     * first rate is up to 85 528 PLN. Rate is 17%.
-     * second rate is above 85 528 PLN. Rate is 32%.
-     * */
     @Test
+    @Exercise(Exercise1.class)
     public void exercise1() {
         double finalTax = taxService.calculateTax(85528);
         assertEquals(14539.76, finalTax);
     }
 
-    /**
-     * Exercise 2
-     * Create class Human and two classes that will inherit from it - Adult and Child.
-     * Human should have at least name and age.
-     * Adult should have information about income.
-     * Child should have information whether it's happy or not.
-     * */
     @Test
+    @Exercise(Exercise2.class)
     public void exercise2() {
         Human human1 = new Adult("David", 19, 90000.00);
         Human human2 = new Adult("Marry", 67, 45000.00);
@@ -60,14 +49,8 @@ public class ExerciseSolutions {
         assertTrue(((Child) human3).isHappy());
     }
 
-
-    /**
-     * Exercise 3
-     * create service that calculates taxes (with logic from exercise 1), but enhance it with objects and inheritance.
-     * Method should accept parameter of class Human.
-     * Method should calculate taxes only for Adults that have income and who's age is above 18 and below 65.
-     * */
     @Test
+    @Exercise(Exercise3.class)
     public void exercise3() {
         Human human1 = new Adult("David", 19, 85528.00);
         Human human2 = new Adult("Marry", 67, 45000.00);
@@ -85,40 +68,56 @@ public class ExerciseSolutions {
         assertEquals(0, tax4);
     }
 
-    /**
-     * Exercise 4
-     * Create service that takes parameter of map that contains:
-     * 1) keys - country of origin
-     * 2) values - Lists of Humans
-     *
-     * Service should calculate taxes only for poles.
-     * */
     @Test
+    @Exercise(Exercise4.class)
     public void exercise4() {
-        List<Human> humans = humanService.generateListOfHumans();
+        ProductService service = new ProductService();
 
-        Map<String, List<Human>> humanMap = humans
-                .stream()
-                .collect(Collectors.groupingBy(Human::getCountry, toList()));
+        List<Product> products = ProductGenerator.generateProducts();
 
-        taxService.calculateTaxForPoles(humanMap);
+        double totalGain = products.stream()
+                .map(product -> service.calculateGain(product))
+                .reduce(0d, (subtotal, element) -> subtotal + element);
 
-        List<Adult> humansWithTaxCalculated = humans.stream()
-                .filter(h -> h instanceof Adult)
-                .map(h -> (Adult) h)
-                .filter(adult -> adult.getDueTax() != null && adult.getDueTax() != 0.00)
-                .collect(toList());
+        double totalWholeSale = products.stream()
+                .map(product -> product.getWholeSalePrice())
+                .reduce(0d, (subtotal, element) -> subtotal + element);
 
-        assertEquals(1, humansWithTaxCalculated.size());
-        assertEquals(14539.76, humansWithTaxCalculated.get(0).getDueTax());
+        double totalRetail = products.stream()
+                .map(product -> product.getRetailPrice())
+                .reduce(0d, (subtotal, element) -> subtotal + element);
+
+        double reverted = (totalWholeSale + totalGain) * 1.23;
+        double diff = totalRetail - reverted;
+
+        System.out.println("Total products:" + products.size());
+        System.out.println("Total wholeSale: " + totalWholeSale);
+        System.out.println("Total retail: " + totalRetail);
+        System.out.println("Total gain: " + totalGain);
+        System.out.println("Total reverted: " + reverted);
+
+        assertTrue(diff < 1);
     }
 
-    /**
-     * Exercise 5
-     * Create your own interface and method that uses generics implementing that interface.
-     * */
     @Test
+    @Exercise(Exercise5.class)
     public void exercise5() {
+        ShopService shopService = new ShopService();
+
+        List<Shop> shops = ShopGenerator.generateShops();
+
+        Map<String, List<Shop>> shopMap = shops
+                .stream()
+                .collect(Collectors.groupingBy(Shop::getCity, toList()));
+
+        double totalIncome = shopService.calculateGainForShopsOfCity(shopMap, "Gdańsk");
+
+        assertTrue(totalIncome > 0);
+    }
+
+    @Test
+    @Exercise(Exercise6.class)
+    public void exercise6() {
         Animal bear = new Animal("Bear", 600.00);
         Animal deer = new Animal("Deer");
 

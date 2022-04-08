@@ -1,5 +1,6 @@
 package jit.team.workshop.generics.service;
 
+import jit.team.workshop.exercises.Exercise6;
 import jit.team.workshop.generics.objects.ChessPlayer;
 import jit.team.workshop.generics.objects.Horse;
 import jit.team.workshop.generics.objects.Plant;
@@ -13,6 +14,8 @@ public class GenericsService {
         //useGenerics();
         //compareGenerics();
         //useGenericObjects();
+
+        new Exercise6().doExercise();
     }
 
     public void useGenerics() {
@@ -55,9 +58,4 @@ public class GenericsService {
         System.out.println("First team member is=" + team.get(0));
         System.out.println("All team members=" + team);
     }
-
-    /**
-     * Exercise 5
-     * Create your own interface and method that uses generics implementing that interface.
-     * */
 }

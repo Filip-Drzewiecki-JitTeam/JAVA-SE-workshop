@@ -1,8 +1,11 @@
 package jit.team.workshop.collections;
 
+import jit.team.workshop.exercises.Exercise4;
 import jit.team.workshop.inheritance.objects.SportCar;
 import jit.team.workshop.inheritance.objects.Truck;
 import jit.team.workshop.inheritance.interfaces.Car;
+import jit.team.workshop.variables.ConditionsService;
+import jit.team.workshop.variables.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +18,8 @@ public class ListService {
     public void practiceLists() {
         //produceCars();
         //flattenList();
+
+        new Exercise4().doExercise();
     }
 
     public List<String> createList(String... strings) {
@@ -42,7 +47,7 @@ public class ListService {
     }
 
     private List<Car> generateCars(int amount) {
-        int carsNum = 25;
+        int carsNum = RandomUtils.generateRandomInt(0, amount);
         int trucksNum = amount - carsNum;
 
         List<Car> cars = new ArrayList<>();
