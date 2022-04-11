@@ -1,6 +1,6 @@
 package tests;
 
-import jit.team.workshop.variables.RandomUtils;
+import jit.team.workshop.generators.RandomUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

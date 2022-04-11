@@ -4,8 +4,7 @@ import jit.team.workshop.exercises.Exercise4;
 import jit.team.workshop.inheritance.objects.SportCar;
 import jit.team.workshop.inheritance.objects.Truck;
 import jit.team.workshop.inheritance.interfaces.Car;
-import jit.team.workshop.variables.ConditionsService;
-import jit.team.workshop.variables.RandomUtils;
+import jit.team.workshop.generators.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;

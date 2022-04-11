@@ -1,7 +1,7 @@
 package solutions.service;
 
 import jit.team.workshop.exercises.objects.Product;
-import jit.team.workshop.variables.RandomUtils;
+import jit.team.workshop.generators.RandomUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

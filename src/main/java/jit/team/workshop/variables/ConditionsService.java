@@ -1,8 +1,7 @@
 package jit.team.workshop.variables;
 
 import jit.team.workshop.exercises.Exercise1;
-
-import java.util.Random;
+import jit.team.workshop.generators.RandomUtils;
 
 public class ConditionsService {
 
